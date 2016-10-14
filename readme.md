@@ -1,1 +1,2 @@
-"# school"
+# School
+This is my first project.
