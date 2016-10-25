@@ -5,14 +5,18 @@ var userTable = {
     'brij': 'abc123',
     'ashish': 'xyz123'
 };
-// app.options('/api/login', (req, res) => {
-// res.header({
-//   'Access-Control-Allow-Origin': '*'
-// });
-// res.send();
-// });
+app.options('/api/login', function (req, res) {
+    res.header({
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'content-type, x-auth'
+    }).send();
+});
 app.get('/api/login', function (req, res) {
     var auth = req.headers['x-auth'];
+    res = res.header({
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'content-type'
+    });
     if (auth) {
         var credential = auth.split(':');
         var pwd = userTable[credential[0]];

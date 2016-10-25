@@ -1,26 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import {Http} from '@angular/http';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'bass-login',
+  providers: [LoginService],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 
-export class LoginComponent implements OnInit {
- public userName : string='abc';
- public password : string='123';
-  constructor(private http: Http) {
+export class LoginComponent {
+  public userName: string = 'abc';
+  public password: string = '123';
+  constructor(private loginService: LoginService) {
 
-   }
-
-  ngOnInit() {
   }
-  public login(){
-    console.log(this.userName);
-    console.log(this.password);
-    this.http.get("http://localhost:3000/api/login")
-    .subscribe(r=> console.log(r));
+
+  public login() {
+    this.loginService.login(this.userName, this.password).subscribe((r)=>{
+      console.log(r);
+    });
   }
 
 }
