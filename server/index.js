@@ -20,6 +20,7 @@ app.get('/api/login', function (req, res) {
     if (auth) {
         var credential = auth.split(':');
         var pwd = userTable[credential[0]];
+        res.status(401);
         if (pwd == undefined) {
             res.send('User not available');
         }
@@ -27,6 +28,7 @@ app.get('/api/login', function (req, res) {
             res.send('Password Missing');
         }
         else if (pwd == credential[1]) {
+            res.status(200).send('OK');
             res.send('Authentiated');
         }
         else {

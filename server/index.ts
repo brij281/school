@@ -22,11 +22,13 @@ app.get('/api/login', (req, res) => {
   if (auth) {
     const credential = auth.split(':');
     const pwd = userTable[credential[0]];
+    res.status(401);
     if (pwd == undefined) {
-      res.send('User not available');
+       res.send('User not available');
     } else if (credential[1] == '') {
       res.send('Password Missing');
     } else if (pwd == credential[1]) {
+      res.status(200).send('OK');
       res.send('Authentiated');
     } else {
       res.send('Authentication Fail');
