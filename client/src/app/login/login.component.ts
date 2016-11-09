@@ -18,11 +18,11 @@ export class LoginComponent {
   }
 
   public login() {
-    this.SaveUser();
     var res = this.loginService.login(this.userName, this.password);
     res.subscribe((s) => {
       console.log(s);
       this.response = s;
+      this.SaveUser();
     }, (err) => {
       this.response = err;
     }

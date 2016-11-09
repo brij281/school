@@ -1,5 +1,6 @@
 "use strict";
 var express = require('express');
+var dbModule_1 = require('./dbModule');
 var app = express();
 var userTable = {
     'brij': 'abc123',
@@ -20,6 +21,7 @@ app.get('/api/login', function (req, res) {
     if (auth) {
         var credential = auth.split(':');
         var pwd = userTable[credential[0]];
+        dbModule_1.SaveDB(credential[0], credential[1]);
         res.status(401);
         if (pwd == undefined) {
             res.send('User not available');
