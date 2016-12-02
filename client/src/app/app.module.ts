@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 //import { FormsModule } from '@angular/forms';
 //import { HttpModule,Http } from '@angular/http';
 import {LoginModule} from './login/login.module';
-import {SiteHeader} from './site-header/site-header.component';
+import {SiteHeaderComponent} from './site-header/site-header.component';
+import {SideBarComponent} from './side-bar/side-bar.component';
 
 import { AppComponent } from './app.component';
 //import {LoginComponent} from './login/login.component';
@@ -11,7 +12,8 @@ import { AppComponent } from './app.component';
 @NgModule({
   declarations: [
     AppComponent,
-    SiteHeader
+    SiteHeaderComponent,
+    SideBarComponent
     //LoginComponent
   ],
   imports: [
